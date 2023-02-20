@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import Logo from "./Logo";
 import {
@@ -6,37 +7,78 @@ import {
   StyledContainer,
   StyledNavbar,
   ThemeSwitch,
+  ResponsiveNav,
 } from "./styles/css.styled";
-import { MdOutlineLightMode } from "react-icons/md";
+import { MdOutlineLightMode, MdReorder } from "react-icons/md";
 import { GoMarkGithub } from "react-icons/go";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [showNav, setShowNav] = useState<boolean>(false);
+
+  const showNavbar = () => {
+    setShowNav(!showNav);
+  };
   return (
-    <div className="bg-primary-blur pd-block-mid">
-      {" "}
+    <div
+      className="bg-primary-blur"
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 5,
+        paddingBlock: "0.3em",
+      }}
+    >
       <StyledContainer>
-        <StyledNavbar>
+        <StyledNavbar className="position-relative" display={showNav}>
           <Logo />
 
-          <FlexContainer className="align-center">
-            <ul className="capitalize">
+          <div>
+            <div
+              style={{
+                fontSize: "2em",
+                cursor: "pointer",
+                border: "1px solid rgba(0,0,0,0.2)",
+                padding: "0.4em",
+                opacity: 0.7,
+              }}
+              className="flex align-center justify-center border-rounded hamburger"
+              onClick={showNavbar}
+            >
+              <MdReorder />
+            </div>
+
+            <ul>
               <li>
-                <Link href={"/"}>about</Link>
+                <Link href={"/"} className="capitalize">
+                  about
+                </Link>
               </li>
               <li>
-                <Link href={"/works"}>works</Link>
+                <Link href={"/works"} className="capitalize">
+                  works
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/thecodemasster-sy/thecodemasterhompage.git"
+                  className="flex align-center"
+                >
+                  <GoMarkGithub />
+                  <span className="mg-left-small">view source code</span>
+                </a>
+              </li>
+
+              <li>
+                <ThemeSwitch gap="0.5em">
+                  <MdOutlineLightMode />
+                  <span>light mode</span>
+                </ThemeSwitch>
               </li>
             </ul>
-
-            <FlexContainer className="align-center" gap="0.5em">
-              <GoMarkGithub /> <span>view souce code</span>
-            </FlexContainer>
-
-            <ThemeSwitch gap="0.5em">
-              <MdOutlineLightMode />
-              <span>Light Mode</span>
-            </ThemeSwitch>
-          </FlexContainer>
+          </div>
         </StyledNavbar>
       </StyledContainer>
     </div>
