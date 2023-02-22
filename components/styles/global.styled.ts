@@ -11,7 +11,9 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${inter.style.fontFamily}, serif;
     font-size: ${({ theme }) => theme.fontSize.fsbody};
     min-height: 100vh;
-    background: ${({ theme }) => theme.color.colorPrimaryBlue};
+    background: ${({ theme }) => theme.color.colorPrimary};
+    transition: background ease 0.5s;
+    color: ${({ theme }) => theme.color.textColor};
   }
 
   .align-center {
@@ -53,12 +55,12 @@ const GlobalStyle = createGlobalStyle`
     box-shadow: 0 8px 32px -30px rgba(0, 0, 0, 0.37);
   }
 
-  .bg-primary-blue {
-    background: ${({ theme }) => theme.color.colorPrimaryBlue}
+  .bg-primary {
+    background: ${({ theme }) => theme.color.colorPrimary}
   }
 
-  .bg-primary-blue-dark {
-    background: ${({ theme }) => theme.color.colorPrimaryBlueDark}
+  .bg-primary-dark {
+    background: ${({ theme }) => theme.color.colorPrimaryDark}
   }
 
   .pd-top-mid {
@@ -120,7 +122,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .border-rounded {
-    border-radius: 0.2em;
+    border-radius: 0.3em;
   } 
 `;
 

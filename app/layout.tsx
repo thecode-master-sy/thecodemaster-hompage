@@ -2,10 +2,10 @@
 
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import StyledComponentsRegistry from "../lib/registry";
 import GlobalStyle from "@/components/styles/global.styled";
-import { ThemeProvider } from "styled-components";
-import theme from "@/components/styles/theme/theme";
+import ThemeContextProvider from "@/components/styles/theme/themeProvider";
 
 export default function RootLayout({
   children,
@@ -21,11 +21,12 @@ export default function RootLayout({
       <head />
       <body>
         <StyledComponentsRegistry>
-          <ThemeProvider theme={theme}>
+          <ThemeContextProvider>
             <GlobalStyle />
             <Navbar />
             {children}
-          </ThemeProvider>
+            <Footer />
+          </ThemeContextProvider>
         </StyledComponentsRegistry>
       </body>
     </html>

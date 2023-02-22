@@ -77,7 +77,7 @@ const Faces = styled.div<FaceInterface>`
   text-align: center;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.color.cubeColor};
   aspect-ratio: 1/1;
   user-select: none;
   border-radius: 0.2em;
@@ -106,6 +106,18 @@ const Faces = styled.div<FaceInterface>`
   &.right {
     transform: rotateY(90deg)
       translateZ(${({ containerSize }) => containerSize / 2}px);
+  }
+  &.shadow {
+      background-color: ${({ theme }) => theme.color.cubeColor};
+      transform: rotateX(-90deg) translateZ(200px);
+      filter: blur(20px);
+      box-shadow: 0 0 120px rgba(201, 229, 242, 0.2),
+      0 0 120px rgba(201, 229, 242, 0.4),
+0 0 120px rgba(201, 229, 242, 0.6),
+0 0 120px rgba(201, 229, 242, 0.8),
+0 0 120px rgba(201, 229, 242, 1);
+
+    }
   }
 `;
 
@@ -190,6 +202,8 @@ const Cube = () => {
         <Faces className="right" containerSize={containerWidth}>
           <Image width={100} height={100} src={nodeLogo} alt="css" />
         </Faces>
+
+        <Faces className="shadow" containerSize={containerWidth}></Faces>
       </MainCube>
     </CubeContainer>
   );

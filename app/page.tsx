@@ -6,10 +6,12 @@ import {
   Text,
   GridContainer,
   ResponsiveGrid,
-  Card,
+  Button,
+  ImageFrame,
 } from "@/components/styles/css.styled";
 import { Container } from "@/components/utilis";
 import Image from "next/image";
+import Link from "next/link";
 import Thecodemaster from "../public/thecodemaster.jpg";
 import NextLogo from "../public/next.svg";
 import GithubLogo from "../public/github.svg";
@@ -18,6 +20,10 @@ import TypeScriptLogo from "../public/typescript-logo.svg";
 import TwitterLogo from "../public/twitter.svg";
 import InstagramLogo from "../public/instagram.svg";
 import GmailLogo from "../public/gmail-icon.svg";
+import { IoIosArrowDropright } from "react-icons/io";
+import { GoMarkGithub } from "react-icons/go";
+import { TbBrandNextjs } from "react-icons/tb";
+import Card from "@/components/Card";
 
 export default function Home() {
   return (
@@ -38,16 +44,7 @@ export default function Home() {
             <div className="mg-top-small">&#40; thecodemaster &#41;</div>
           </div>
 
-          <div
-            style={{
-              border: "2px solid rgba(0,0,0,0.5)",
-              padding: "0.2em",
-              borderRadius: "50%",
-              display: "flex",
-              justifyContent: "center",
-              alignContent: "center",
-            }}
-          >
+          <ImageFrame>
             <Image
               width={100}
               height={100}
@@ -57,12 +54,12 @@ export default function Home() {
                 borderRadius: "50%",
               }}
             />
-          </div>
+          </ImageFrame>
         </FlexContainer>
       </section>
 
       <section className="mg-top-mid">
-        <div className="bg-primary-blue-dark pd-block-mid pd-inline-mid text-center border-rounded">
+        <div className="bg-primary-dark pd-block-mid pd-inline-mid text-center border-rounded">
           <p>Hello, I am Nwaegerue Chinemerem, a Nigerian Developer</p>
         </div>
       </section>
@@ -93,12 +90,14 @@ export default function Home() {
             <ResponsiveGrid>
               <Card>
                 <FlexContainer className="direction-column align-center">
-                  <Image
-                    width={60}
-                    height={60}
-                    src={GithubLogo}
-                    alt={"github icon"}
-                  />
+                  <span>
+                    <GoMarkGithub
+                      style={{
+                        width: "60px",
+                        height: "60px",
+                      }}
+                    />
+                  </span>
                   <span>Git Hub</span>
                 </FlexContainer>
 
@@ -129,23 +128,6 @@ export default function Home() {
                   <Image
                     width={60}
                     height={60}
-                    src={NextLogo}
-                    alt={"Next icon"}
-                  />
-                  <span>Next Js</span>
-                </FlexContainer>
-
-                <Text className="mg-top-mid text-center">
-                  I am very familiar with the next js framework, and i am able
-                  to provide a mini backend for any application with this
-                </Text>
-              </Card>
-
-              <Card>
-                <FlexContainer className="direction-column align-center">
-                  <Image
-                    width={60}
-                    height={60}
                     src={TypeScriptLogo}
                     alt={"Typescript icon"}
                   />
@@ -157,7 +139,45 @@ export default function Home() {
                   easier, this is a tool i have in my arsenal
                 </Text>
               </Card>
+
+              <Card>
+                <FlexContainer className="direction-column align-center">
+                  <span>
+                    <TbBrandNextjs
+                      style={{
+                        width: "60px",
+                        height: "60px",
+                      }}
+                    />
+                  </span>
+                  <span>Next Js</span>
+                </FlexContainer>
+
+                <Text className="mg-top-mid text-center">
+                  I am very familiar with the next js framework, and i am able
+                  to provide a mini backend for any application with this
+                </Text>
+              </Card>
             </ResponsiveGrid>
+
+            <FlexContainer className="mg-top-mid justify-center">
+              <Link href="/works">
+                <Button>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "1em",
+                    }}
+                    className="align-center "
+                  >
+                    <span>My Projects</span>
+                    <span className="flex align-center icon">
+                      <IoIosArrowDropright />
+                    </span>{" "}
+                  </div>
+                </Button>
+              </Link>
+            </FlexContainer>
           </div>
         </div>
       </section>
@@ -167,7 +187,10 @@ export default function Home() {
           <Title>On The Web</Title>
 
           <div className="mg-top-mid pd-top-mid">
-            <a>
+            <a
+              href="https://www.instagram.com/thecode_masster/"
+              target={"_blank"}
+            >
               <FlexContainer>
                 <Image
                   width={20}
@@ -179,7 +202,11 @@ export default function Home() {
               </FlexContainer>
             </a>
 
-            <a className="block mg-top-mid">
+            <a
+              className="block mg-top-mid"
+              href="https://twitter.com/thecode_master"
+              target={"_blank"}
+            >
               <FlexContainer>
                 <Image width={20} height={20} src={TwitterLogo} alt="twitter" />
 
@@ -188,17 +215,27 @@ export default function Home() {
             </a>
 
             <a
-              href="https://github.com/thecodemaster-sy"
+              href="https://github.com/thecode-master-sy"
               target={"_blank"}
               className="block mg-top-mid"
             >
               <FlexContainer>
-                <Image width={20} height={20} src={GithubLogo} alt="github" />
-
+                <GoMarkGithub />
                 <span>Thecodemaster-sy</span>
               </FlexContainer>
             </a>
           </div>
+        </div>
+      </section>
+
+      <section className="mg-top-large">
+        <div className="flex align-center direction-column">
+          <h2>Lets Work together</h2>
+          <p className="mg-top-mid">Contact me at</p>
+          <FlexContainer className="align-center pd-block-small pd-inline-small mg-top-mid bg-primary-dark border-rounded">
+            <Image width={20} height={20} src={GmailLogo} alt="Email" />
+            <a href="https://gmail.com">chinemeremnwaegerue@gmail.com</a>
+          </FlexContainer>
         </div>
       </section>
     </StyledContainer>

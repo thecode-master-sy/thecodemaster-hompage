@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import Logo from "./Logo";
 import {
@@ -7,18 +6,22 @@ import {
   StyledContainer,
   StyledNavbar,
   ThemeSwitch,
-  ResponsiveNav,
 } from "./styles/css.styled";
 import { MdOutlineLightMode, MdReorder } from "react-icons/md";
 import { GoMarkGithub } from "react-icons/go";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ThemeContextInterface, useTheme } from "./styles/theme/themeProvider";
+import { ThemeContext } from "./styles/theme/themeProvider";
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState<boolean>(false);
+  const { mode } = useTheme() as ThemeContextInterface;
+  const { updateMode } = useTheme() as ThemeContextInterface;
 
   const showNavbar = () => {
     setShowNav(!showNav);
   };
+
   return (
     <div
       className="bg-primary-blur"
@@ -63,7 +66,8 @@ const Navbar = () => {
               </li>
               <li>
                 <a
-                  href="https://github.com/thecodemasster-sy/thecodemasterhompage.git"
+                  href="https://github.com/thecode-master-sy/thecodemaster-hompage.git"
+                  target="_blank"
                   className="flex align-center"
                 >
                   <GoMarkGithub />
@@ -72,7 +76,7 @@ const Navbar = () => {
               </li>
 
               <li>
-                <ThemeSwitch gap="0.5em">
+                <ThemeSwitch gap="0.5em" onClick={updateMode}>
                   <MdOutlineLightMode />
                   <span>light mode</span>
                 </ThemeSwitch>

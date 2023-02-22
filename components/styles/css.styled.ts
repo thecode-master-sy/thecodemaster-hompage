@@ -15,11 +15,18 @@ interface StyledNavbarProps {
   display?: boolean;
 }
 
+interface StyledCardProps {
+  position?: {
+    x: number;
+    y: number;
+  };
+  ref: any;
+}
+
 export const StyledContainer = styled.div<StyledContainerProps>`
   max-width: min(100%, 800px);
   padding: 0.8em;
   margin-inline: auto;
-  font-family: sans-serif;
   ${({ height }) =>
     height &&
     css`
@@ -48,7 +55,7 @@ export const StyledNavbar = styled.nav<StyledNavbarProps>`
     position: absolute;
     top: 125%;
     right: 0;
-    background: ${({ theme }) => theme.color.colorPrimaryBlueDark};
+    background: ${({ theme }) => theme.color.colorPrimaryDark};
     padding: ${({ theme }) => theme.paddingSmall};
     border-radius: 0.5em;
     z-index: 10;
@@ -78,7 +85,7 @@ export const FlexContainer = styled.div<FlexContainerProps>`
 `;
 
 export const ThemeSwitch = styled(FlexContainer)`
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border: 1px solid ${({ theme }) => theme.color.borderColor};
   padding-block: 0.5em;
   padding-inline: 0.5em;
   cursor: pointer;
@@ -108,7 +115,7 @@ export const Title = styled.span`
     left: 0;
     width: 100%;
     height: 1.5px;
-    background-color: rgba(0, 0, 0.3);
+    background-color: ${({ theme }) => theme.color.borderColor};
   }
 `;
 
@@ -125,9 +132,56 @@ export const ResponsiveGrid = styled(GridContainer)`
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 `;
 
-export const Card = styled.div`
+export const StyledCard = styled.div<StyledCardProps>`
   padding: ${({ theme }) => theme.paddingMid};
-  border-radius: "0.5em";
-  background-color: ${({ theme }) => theme.color.colorPrimaryBlueDark};
-  box-shadow: 0 0 8px -6px rgba(0, 0, 0, 0.5);
+  position: relative;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: ${({ theme }) => theme.color.colorPrimaryDark};
+    border-radius: 0.5em;
+    box-shadow: 0 0 8px -6px rgba(0, 0, 0, 0.5);
+    transition: all linear 0.5s;
+    z-index: -1;
+
+    ${({ position }) =>
+      position &&
+      css`
+        transform: translateX(${position.x}px) translateY(${position.y}px);
+      `}
+  }
+`;
+
+export const Button = styled.button`
+  background-color: ${({ theme }) => theme.color.btnColor};
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 0.8em 2em;
+  font-size: ${({ theme }) => theme.fontSize.btn};
+  color: white;
+  border-radius: 0.2em;
+
+  &:hover,
+  &:active {
+    .icon {
+      transform: translateX(8px);
+      transition: all linear 0.5s;
+    }
+  }
+`;
+
+export const ImageFrame = styled.div`
+  border: 2px solid ${({ theme }) => theme.color.borderColor};
+  padding: 0.2em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 `;
