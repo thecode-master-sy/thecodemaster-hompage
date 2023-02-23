@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StyledComponentsRegistry from "../lib/registry";
 import GlobalStyle from "@/components/styles/global.styled";
+import { FlexContainer } from "@/components/styles/css.styled";
+import Cube from "@/components/Cube";
 import ThemeContextProvider from "@/components/styles/theme/themeProvider";
 
 export default function RootLayout({
@@ -24,6 +26,15 @@ export default function RootLayout({
           <ThemeContextProvider>
             <GlobalStyle />
             <Navbar />
+            <FlexContainer
+              className="align-center justify-center"
+              style={{
+                minHeight: "90vh",
+              }}
+            >
+              <Cube />
+            </FlexContainer>
+
             {children}
             <Footer />
           </ThemeContextProvider>

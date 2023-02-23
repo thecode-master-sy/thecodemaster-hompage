@@ -124,8 +124,64 @@ const GlobalStyle = createGlobalStyle`
   .border-rounded {
     border-radius: 0.3em;
   } 
-`;
 
-console.log(inter);
+.image-container {
+
+  width: 100%;
+
+  & > div {
+    position: unset !important;
+  }
+
+  .image {
+    object-fit: cover;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+  }
+}
+
+.link {
+  position: relative; 
+  display: block;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    height: 3px;
+    background-color: ${({ theme }) => theme.color.borderColor};
+    transition: all ease 0.5s;
+    transform: translateX(-110%);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    height: 3px;
+    background-color: ${({ theme }) => theme.color.borderColor};
+    transition: all ease 0.5s;
+    transform: translateX(110%);
+  }
+
+}
+
+.link.active {
+    &::before,
+    &::after {
+      transform: translateX(0)
+    }
+  }
+
+
+`;
 
 export default GlobalStyle;

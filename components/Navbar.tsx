@@ -1,26 +1,26 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import {
-  FlexContainer,
   StyledContainer,
   StyledNavbar,
   ThemeSwitch,
 } from "./styles/css.styled";
 import { MdOutlineLightMode, MdReorder } from "react-icons/md";
 import { GoMarkGithub } from "react-icons/go";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { ThemeContextInterface, useTheme } from "./styles/theme/themeProvider";
-import { ThemeContext } from "./styles/theme/themeProvider";
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState<boolean>(false);
-  const { mode } = useTheme() as ThemeContextInterface;
   const { updateMode } = useTheme() as ThemeContextInterface;
 
   const showNavbar = () => {
     setShowNav(!showNav);
   };
+
+  const pathname = usePathname();
 
   return (
     <div
@@ -35,7 +35,10 @@ const Navbar = () => {
       }}
     >
       <StyledContainer>
-        <StyledNavbar className="position-relative" display={showNav}>
+        <StyledNavbar
+          className="position-relative"
+          show={showNav ? true : false}
+        >
           <Logo />
 
           <div>
@@ -55,12 +58,21 @@ const Navbar = () => {
 
             <ul>
               <li>
-                <Link href={"/"} className="capitalize">
+                <Link
+                  href={"/"}
+                  className={`capitalize link ${pathname === "/" && "active"}`}
+                >
                   about
                 </Link>
               </li>
               <li>
-                <Link href={"/works"} className="capitalize">
+                <Link
+                  href={"/works"}
+                  className={`capitalize link ${
+                    (pathname === "/works" || pathname === `/works/[work]`) &&
+                    "active"
+                  }`}
+                >
                   works
                 </Link>
               </li>

@@ -28,15 +28,6 @@ import Card from "@/components/Card";
 export default function Home() {
   return (
     <StyledContainer>
-      <FlexContainer
-        className="align-center justify-center"
-        style={{
-          minHeight: "90vh",
-        }}
-      >
-        <Cube />
-      </FlexContainer>
-
       <section>
         <FlexContainer className="justify-center align-center">
           <div>

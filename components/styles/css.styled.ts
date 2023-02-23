@@ -12,7 +12,7 @@ interface FlexContainerProps {
 }
 
 interface StyledNavbarProps {
-  display?: boolean;
+  show?: boolean;
 }
 
 interface StyledCardProps {
@@ -59,7 +59,7 @@ export const StyledNavbar = styled.nav<StyledNavbarProps>`
     padding: ${({ theme }) => theme.paddingSmall};
     border-radius: 0.5em;
     z-index: 10;
-    display: ${({ display }) => (display ? "flex" : "none")};
+    display: ${({ show }) => (show ? "flex" : "none")};
     transition: all ease 0.5s;
   }
 
