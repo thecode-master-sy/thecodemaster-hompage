@@ -27,7 +27,7 @@ import Card from "@/components/Card";
 
 export default function Home() {
   return (
-    <StyledContainer>
+    <StyledContainer className="mg-top-large">
       <section>
         <FlexContainer className="justify-center align-center">
           <div>

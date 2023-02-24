@@ -20,6 +20,10 @@ const GlobalStyle = createGlobalStyle`
     align-items: center;
   }
 
+  .align-end {
+    align-items: flex-end;
+  }
+
   .justify-center{
     justify-content: center
   }
@@ -141,6 +145,7 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 
+@media screen and (min-width: 50em) {
 .link {
   position: relative; 
   display: block;
@@ -179,7 +184,30 @@ const GlobalStyle = createGlobalStyle`
     &::after {
       transform: translateX(0)
     }
+}
+}
+
+.responsive--cube-container {
+  min-height: 60vh;
+  padding: ${({ theme }) => theme.paddingLarge};
+
+  @media screen and (min-width: 50em) {
+    min-height: 70vh;
+    padding: ${({ theme }) => theme.paddingLarge}
   }
+ }
+
+ .work-container--responsive {
+    margin-top: 2.5em; 
+
+    @media screen and (min-width: 50em) {
+      
+      margin-top: 0;
+    }
+  }
+
+
+ 
 
 
 `;

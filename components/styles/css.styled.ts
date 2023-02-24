@@ -25,7 +25,7 @@ interface StyledCardProps {
 
 export const StyledContainer = styled.div<StyledContainerProps>`
   max-width: min(100%, 800px);
-  padding: 0.8em;
+  padding: 1.1em;
   margin-inline: auto;
   ${({ height }) =>
     height &&

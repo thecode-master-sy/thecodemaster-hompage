@@ -64,7 +64,7 @@ const MainCube = styled.div<CubeInterface>`
           cursor: grab;
         `
       : css`
-          /* animation: ${rotate(rotateX)} 10s linear infinite; */
+          animation: ${rotate(rotateX)} 20s linear infinite;
         `}
 `;
 
@@ -132,24 +132,22 @@ const Cube = () => {
   const [startingY, setStartingY] = useState<number>(0);
   const [endingX, setEndingX] = useState<number>(0);
   const [endingY, setEndingY] = useState<number>(0);
-  const [size, setSize] = useState<number>(WindowWidth);
+  const [size, setSize] = useState<number>(window.innerWidth);
 
   useEffect(() => {
     const handleWidth = () => {
-      setSize(WindowWidth);
+      setSize(window.innerWidth);
     };
 
-    if (typeof window !== "undefined") {
-      // browser code
-      window.addEventListener("resize", handleWidth);
+    // browser code
+    window.addEventListener("resize", handleWidth);
 
-      return () => {
-        window.removeEventListener("resize", handleWidth);
-      };
-    }
+    return () => {
+      window.removeEventListener("resize", handleWidth);
+    };
   });
 
-  const containerWidth = size <= 800 ? 200 : 250;
+  const containerWidth = size <= 800 ? 150 : 250;
 
   const mouseDown = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -175,10 +173,36 @@ const Cube = () => {
     setGrabbing(false);
   };
 
+  const touchStart = (e: React.TouchEvent<HTMLElement>) => {
+    setGrabbing(true);
+    setStartingX(e.changedTouches[0].clientY);
+    setStartingY(e.changedTouches[0].clientX);
+  };
+
+  const touchMove = (e: React.TouchEvent<HTMLElement>) => {
+    if (grabbing) {
+      setEndingY(e.changedTouches[0].clientX);
+      setEndingX(e.changedTouches[0].clientY);
+
+      const diffX = endingX - startingX;
+      const diffY = endingY - startingY;
+
+      setRotateX((rotateX + -diffX) / 2);
+      setRotateY((rotateY + diffY) / 2);
+    }
+  };
+
+  const touchEnd = (e: React.TouchEvent<HTMLElement>) => {
+    setGrabbing(false);
+  };
+
   return (
     <CubeContainer onMouseMove={(e) => mouseMove(e)}>
       <MainCube
         onMouseDown={(e) => mouseDown(e)}
+        onTouchStart={(e) => touchStart(e)}
+        onTouchMove={(e) => touchMove(e)}
+        onTouchEnd={(e) => touchEnd(e)}
         onMouseUp={mouseUp}
         grabbing={grabbing}
         rotateX={rotateX}
@@ -186,27 +210,27 @@ const Cube = () => {
         containerSize={containerWidth}
       >
         <Faces className="front" containerSize={containerWidth}>
-          <Image width={100} height={100} src={reactLogo} alt="react" />
+          <Image width={80} height={80} src={reactLogo} alt="react" />
         </Faces>
 
         <Faces className="back" containerSize={containerWidth}>
-          <Image width={100} height={100} src={jsLogo} alt="css" />
+          <Image width={80} height={80} src={jsLogo} alt="css" />
         </Faces>
 
         <Faces className="top" containerSize={containerWidth}>
-          <Image width={100} height={100} src={cssLogo} alt="css" />
+          <Image width={80} height={80} src={cssLogo} alt="css" />
         </Faces>
 
         <Faces className="bottom" containerSize={containerWidth}>
-          <Image width={100} height={100} src={tsLogo} alt="css" />
+          <Image width={80} height={80} src={tsLogo} alt="css" />
         </Faces>
 
         <Faces className="left" containerSize={containerWidth}>
-          <Image width={100} height={100} src={nextLogo} alt="css" />
+          <Image width={80} height={80} src={nextLogo} alt="css" />
         </Faces>
 
         <Faces className="right" containerSize={containerWidth}>
-          <Image width={100} height={100} src={nodeLogo} alt="css" />
+          <Image width={80} height={80} src={nodeLogo} alt="css" />
         </Faces>
 
         <Faces className="shadow" containerSize={containerWidth}></Faces>

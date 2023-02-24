@@ -13,7 +13,7 @@ const Cube = dynamic(
   () => {
     return import("@/components/Cube");
   },
-  { ssr: true }
+  { ssr: false }
 );
 
 export default function RootLayout({
@@ -33,12 +33,7 @@ export default function RootLayout({
           <ThemeContextProvider>
             <GlobalStyle />
             <Navbar />
-            <FlexContainer
-              className="align-center justify-center"
-              style={{
-                minHeight: "90vh",
-              }}
-            >
+            <FlexContainer className="align-end justify-center responsive--cube-container">
               <Cube />
             </FlexContainer>
 

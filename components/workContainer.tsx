@@ -19,7 +19,7 @@ const WorkContainer = ({
 }: workContainerProps) => {
   return (
     <Link href={`/works/${id}`}>
-      <FlexContainer className="direction-column">
+      <FlexContainer className="direction-column work-container--responsive">
         <div className="image-container">
           <Image
             src={thumbnail}
