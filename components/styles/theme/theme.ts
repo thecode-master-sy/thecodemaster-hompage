@@ -1,10 +1,14 @@
+export type ThemeType = typeof theme;
+
 const theme = {
   color: {
     textColor: "blue",
-    colorPrimaryBlue: "rgba(225, 240, 247, 0.2)",
-    colorPrimaryBlueDark: "rgba(225, 240, 247, 0.5)",
+    colorPrimary: "rgba(225, 240, 247, 0.2)",
+    colorPrimaryDark: "rgba(225, 240, 247, 0.5)",
     colorPrimaryBlack: "rgba(0,0,0,0.2)",
     btnColor: "rgb(21, 151, 232)",
+    borderColor: "rgb(21, 151, 232)",
+    cubeColor: "rgb(201, 229, 242)",
     colorTransparent: `linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.2),
