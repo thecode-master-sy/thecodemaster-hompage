@@ -23,6 +23,10 @@ interface StyledCardProps {
   ref: any;
 }
 
+interface ThemeSwitchProps {
+  mode?: string;
+}
+
 export const StyledContainer = styled.div<StyledContainerProps>`
   max-width: min(100%, 800px);
   padding: 1.1em;
@@ -84,12 +88,47 @@ export const FlexContainer = styled.div<FlexContainerProps>`
   gap: ${({ gap, theme }) => (gap ? gap : theme.gap)};
 `;
 
-export const ThemeSwitch = styled(FlexContainer)`
+export const ThemeSwitch = styled(FlexContainer)<ThemeSwitchProps>`
   border: 1px solid ${({ theme }) => theme.color.borderColor};
   padding-block: 0.5em;
   padding-inline: 0.5em;
   cursor: pointer;
   border-radius: 0.5em;
+  overflow: hidden;
+
+  .icon {
+    position: relative;
+    min-width: 2em;
+  }
+
+  .sun,
+  .moon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all ease 0.5s;
+  }
+
+  ${({ mode }) =>
+    mode === "light"
+      ? css`
+          .sun {
+            transform: translateY(-50%);
+          }
+
+          .moon {
+            transform: translateY(-300%);
+          }
+        `
+      : css`
+          .moon {
+            transform: translateY(-50%);
+          }
+
+          .sun {
+            transform: translateY(-300%);
+          }
+        `}
 `;
 
 export const ResponsiveNav = styled.div`

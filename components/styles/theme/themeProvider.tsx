@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 
 export interface ThemeContextInterface {
@@ -19,6 +19,14 @@ export const useTheme = () => {
 
 const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [mode, setMode] = useState<string>("light");
+
+  useEffect(() => {
+    let Dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    if (Dark) {
+      setMode("dark");
+    }
+  }, []);
 
   const updateMode = () => {
     if (mode === "light") {

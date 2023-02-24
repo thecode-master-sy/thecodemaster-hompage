@@ -51,7 +51,13 @@ export default function Home() {
 
       <section className="mg-top-mid">
         <div className="bg-primary-dark pd-block-mid pd-inline-mid text-center border-rounded">
-          <p>Hello, I am Nwaegerue Chinemerem, a Nigerian Developer</p>
+          <p
+            style={{
+              lineHeight: 1.6,
+            }}
+          >
+            Hello, I am Nwaegerue Chinemerem, a Nigerian Developer
+          </p>
         </div>
       </section>
 

@@ -8,6 +8,7 @@ import {
   ThemeSwitch,
 } from "./styles/css.styled";
 import { MdOutlineLightMode, MdReorder } from "react-icons/md";
+import { GiMoon } from "react-icons/gi";
 import { GoMarkGithub } from "react-icons/go";
 import { useState } from "react";
 import { ThemeContextInterface, useTheme } from "./styles/theme/themeProvider";
@@ -15,6 +16,7 @@ import { ThemeContextInterface, useTheme } from "./styles/theme/themeProvider";
 const Navbar = () => {
   const [showNav, setShowNav] = useState<boolean>(false);
   const { updateMode } = useTheme() as ThemeContextInterface;
+  const { mode } = useTheme() as ThemeContextInterface;
 
   const showNavbar = () => {
     setShowNav(!showNav);
@@ -88,9 +90,12 @@ const Navbar = () => {
               </li>
 
               <li>
-                <ThemeSwitch gap="0.5em" onClick={updateMode}>
-                  <MdOutlineLightMode />
-                  <span>light mode</span>
+                <ThemeSwitch gap="0.5em" mode={mode} onClick={updateMode}>
+                  <div className="icon">
+                    <MdOutlineLightMode className="sun" />
+                    <GiMoon className="moon" />
+                  </div>
+                  <span>{mode} mode</span>
                 </ThemeSwitch>
               </li>
             </ul>

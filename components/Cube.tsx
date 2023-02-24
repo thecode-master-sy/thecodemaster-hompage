@@ -64,7 +64,7 @@ const MainCube = styled.div<CubeInterface>`
           cursor: grab;
         `
       : css`
-          animation: ${rotate(rotateX)} 20s linear infinite;
+          /* animation: ${rotate(rotateX)} 20s linear infinite; */
         `}
 `;
 
@@ -180,6 +180,7 @@ const Cube = () => {
   };
 
   const touchMove = (e: React.TouchEvent<HTMLElement>) => {
+    e.preventDefault();
     if (grabbing) {
       setEndingY(e.changedTouches[0].clientX);
       setEndingX(e.changedTouches[0].clientY);
