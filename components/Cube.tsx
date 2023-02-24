@@ -22,9 +22,12 @@ interface FaceInterface {
   containerSize: number;
 }
 
-const getWidth = () => {
-  return window.innerWidth;
-};
+let WindowWidth: number;
+
+if (typeof window !== "undefined") {
+  // browser code
+  WindowWidth = window.innerWidth;
+}
 
 const rotate = (rotateX: number) =>
   keyframes`
@@ -129,18 +132,21 @@ const Cube = () => {
   const [startingY, setStartingY] = useState<number>(0);
   const [endingX, setEndingX] = useState<number>(0);
   const [endingY, setEndingY] = useState<number>(0);
-  const [size, setSize] = useState<number>(window.innerWidth);
+  const [size, setSize] = useState<number>(WindowWidth);
 
   useEffect(() => {
     const handleWidth = () => {
-      setSize(window.innerWidth);
+      setSize(WindowWidth);
     };
 
-    window.addEventListener("resize", handleWidth);
+    if (typeof window !== "undefined") {
+      // browser code
+      window.addEventListener("resize", handleWidth);
 
-    return () => {
-      window.removeEventListener("resize", handleWidth);
-    };
+      return () => {
+        window.removeEventListener("resize", handleWidth);
+      };
+    }
   });
 
   const containerWidth = size <= 800 ? 200 : 250;

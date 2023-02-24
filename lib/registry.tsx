@@ -13,6 +13,11 @@ export default function StyledComponentsRegistry({
   // x-ref: https://reactjs.org/docs/hooks-reference.html#lazy-initial-state
   const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet());
 
+  useServerInsertedHTML(() => {
+    const styles = styledComponentsStyleSheet.getStyleElement();
+    return <>{styles}</>;
+  });
+
   if (typeof window !== "undefined") return <>{children}</>;
 
   return (

@@ -6,8 +6,15 @@ import Footer from "@/components/Footer";
 import StyledComponentsRegistry from "../lib/registry";
 import GlobalStyle from "@/components/styles/global.styled";
 import { FlexContainer } from "@/components/styles/css.styled";
-import Cube from "@/components/Cube";
 import ThemeContextProvider from "@/components/styles/theme/themeProvider";
+import dynamic from "next/dynamic";
+
+const Cube = dynamic(
+  () => {
+    return import("@/components/Cube");
+  },
+  { ssr: true }
+);
 
 export default function RootLayout({
   children,
