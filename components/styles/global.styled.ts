@@ -81,6 +81,15 @@ const GlobalStyle = createGlobalStyle`
 
   .pd-block-mid {
     padding-block: ${({ theme }) => theme.paddingMid}
+
+  }
+
+  .pd-inline-mid {
+    padding-inline: ${({ theme }) => theme.paddingMid}
+  }
+  
+  .pd-inline-large {
+    padding-inline: ${({ theme }) => theme.paddingLarge}
   }
 
   .mg-left-small {

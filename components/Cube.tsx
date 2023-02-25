@@ -64,7 +64,7 @@ const MainCube = styled.div<CubeInterface>`
           cursor: grab;
         `
       : css`
-          /* animation: ${rotate(rotateX)} 20s linear infinite; */
+          animation: ${rotate(rotateX)} 20s linear infinite;
         `}
 `;
 
@@ -112,7 +112,7 @@ const Faces = styled.div<FaceInterface>`
   }
   &.shadow {
       background-color: ${({ theme }) => theme.color.cubeColor};
-      transform: rotateX(-90deg) translateZ(200px);
+      transform: rotateX(-90deg) translateZ(150px);
       filter: blur(20px);
       box-shadow: 0 0 120px rgba(201, 229, 242, 0.2),
       0 0 120px rgba(201, 229, 242, 0.4),
@@ -180,7 +180,6 @@ const Cube = () => {
   };
 
   const touchMove = (e: React.TouchEvent<HTMLElement>) => {
-    e.preventDefault();
     if (grabbing) {
       setEndingY(e.changedTouches[0].clientX);
       setEndingX(e.changedTouches[0].clientY);
