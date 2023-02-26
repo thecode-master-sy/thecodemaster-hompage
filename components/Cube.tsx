@@ -54,6 +54,7 @@ const MainCube = styled.div<CubeInterface>`
   width: ${({ containerSize }) => containerSize}px;
   height: ${({ containerSize }) => containerSize}px;
   position: relative;
+  touch-action: none;
 
   transform: ${({ rotateX, rotateY }) =>
     `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`};
@@ -64,7 +65,7 @@ const MainCube = styled.div<CubeInterface>`
           cursor: grab;
         `
       : css`
-          animation: ${rotate(rotateX)} 20s linear infinite;
+          /* animation: ${rotate(rotateX)} 20s linear infinite; */
         `}
 `;
 
