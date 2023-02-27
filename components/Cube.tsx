@@ -22,13 +22,6 @@ interface FaceInterface {
   containerSize: number;
 }
 
-let WindowWidth: number;
-
-if (typeof window !== "undefined") {
-  // browser code
-  WindowWidth = window.innerWidth;
-}
-
 const rotate = (rotateX: number) =>
   keyframes`
   0% {
@@ -65,7 +58,7 @@ const MainCube = styled.div<CubeInterface>`
           cursor: grab;
         `
       : css`
-          /* animation: ${rotate(rotateX)} 20s linear infinite; */
+          animation: ${rotate(rotateX)} 20s linear infinite;
         `}
 `;
 
