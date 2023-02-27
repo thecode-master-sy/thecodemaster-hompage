@@ -37,7 +37,7 @@ const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const theme = {
-    mode: mode,
+    mode: mode === "light" ? "light" : "dark",
     color: {
       textColor: mode === "light" ? "black" : "white",
       colorPrimary: mode === "light" ? "rgba(225, 240, 247, 0.2)" : "#202023",
