@@ -215,10 +215,11 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-
- 
-
-
+  @media (prefers-color-scheme: ${({ theme }) => theme.mode}) {
+    html {
+      color-scheme: ${({ theme }) => theme.mode}
+    }
+  }
 `;
 
 export default GlobalStyle;

@@ -1,6 +1,7 @@
 export type ThemeType = typeof theme;
 
 const theme = {
+  mode: "light",
   color: {
     textColor: "blue",
     colorPrimary: "rgba(225, 240, 247, 0.2)",
