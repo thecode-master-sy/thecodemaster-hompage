@@ -22,11 +22,13 @@ const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [mode, setMode] = useState<string | null>(null);
 
   useEffect(() => {
-    const storedMode = localStorage.getItem("mode")
-    ? localStorage.getItem("mode")
-    : "light";
+   const storedMode = localStorage.getItem("mode");
 
+   if(storedMode == "undefined") {
+    setMode("light")
+   }else {
     setMode(storedMode)
+   }
 
   }, []);
 
