@@ -18,8 +18,8 @@ export const useTheme = () => {
 };
 
 const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const storedMode = localStorage.getItem("mode")
-    ? localStorage.getItem("mode")
+  const storedMode = localStorage?.getItem("mode")
+    ? localStorage?.getItem("mode")
     : "light";
   const [mode, setMode] = useState<string | null>(storedMode);
 
