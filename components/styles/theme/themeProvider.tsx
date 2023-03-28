@@ -19,7 +19,7 @@ export const useTheme = () => {
 
 const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
   
-  const [mode, setMode] = useState<string | null>();
+  const [mode, setMode] = useState<string | null>(null);
 
   useEffect(() => {
     const storedMode = localStorage.getItem("mode")
