@@ -75,6 +75,7 @@ const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
       small: 8,
       super: 9,
     },
+    gapTwo: "3em",
     gap: "2em",
   };
 
