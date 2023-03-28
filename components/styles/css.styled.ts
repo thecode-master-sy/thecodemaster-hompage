@@ -24,7 +24,7 @@ interface StyledCardProps {
 }
 
 interface ThemeSwitchProps {
-  mode?: string;
+  mode: string | null;
 }
 
 export const StyledContainer = styled.div<StyledContainerProps>`
