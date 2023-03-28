@@ -28,11 +28,6 @@ const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
 
     setMode(storedMode)
 
-    let Dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    if (Dark) {
-      setMode("dark");
-    }
   }, []);
 
   const updateMode = () => {
