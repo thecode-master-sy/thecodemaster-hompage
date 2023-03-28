@@ -5,7 +5,7 @@ import { useState, useContext, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 
 export interface ThemeContextInterface {
-  mode: string;
+  mode: string | null;
   updateMode: () => void;
 }
 
@@ -18,7 +18,10 @@ export const useTheme = () => {
 };
 
 const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [mode, setMode] = useState<string>("light");
+  const storedMode = localStorage.getItem("mode")
+    ? localStorage.getItem("mode")
+    : "light";
+  const [mode, setMode] = useState<string | null>(storedMode);
 
   useEffect(() => {
     let Dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -31,8 +34,10 @@ const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
   const updateMode = () => {
     if (mode === "light") {
       setMode("dark");
+      localStorage.setItem("mode", "dark");
     } else {
       setMode("light");
+      localStorage.setItem("mode", "light");
     }
   };
 
