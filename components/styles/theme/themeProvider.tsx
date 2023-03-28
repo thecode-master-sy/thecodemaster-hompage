@@ -26,8 +26,8 @@ const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
     ? localStorage.getItem("mode")
     : "light";
 
-    setMode(storedMode);
-    
+    setMode(storedMode)
+
     let Dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
     if (Dark) {
