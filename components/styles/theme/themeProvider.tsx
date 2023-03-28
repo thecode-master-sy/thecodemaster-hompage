@@ -18,12 +18,16 @@ export const useTheme = () => {
 };
 
 const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const storedMode = localStorage?.getItem("mode")
-    ? localStorage?.getItem("mode")
-    : "light";
-  const [mode, setMode] = useState<string | null>(storedMode);
+  
+  const [mode, setMode] = useState<string | null>();
 
   useEffect(() => {
+    const storedMode = localStorage.getItem("mode")
+    ? localStorage.getItem("mode")
+    : "light";
+
+    setMode(storedMode);
+    
     let Dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
     if (Dark) {
