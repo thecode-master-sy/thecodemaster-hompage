@@ -6,6 +6,10 @@ import { Inter } from "@next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 const GlobalStyle = createGlobalStyle`
+  html {
+    color-scheme: ${({ theme }) => theme.mode}
+  }
+  
   body {
     color: #000;
     font-family: ${inter.style.fontFamily}, serif;
@@ -215,8 +219,9 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+ 
+   
   
-  }
 `;
 
 export default GlobalStyle;
