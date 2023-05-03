@@ -8,6 +8,7 @@ import GlobalStyle from "@/components/styles/global.styled";
 import { FlexContainer } from "@/components/styles/css.styled";
 import ThemeContextProvider from "@/components/styles/theme/themeProvider";
 import dynamic from "next/dynamic";
+import { Analytics } from "@vercel/analytics/react";
 
 const Cube = dynamic(
   () => {
@@ -42,6 +43,7 @@ export default function RootLayout({
           </ThemeContextProvider>
         </StyledComponentsRegistry>
       </body>
+      <Analytics />
     </html>
   );
 }
