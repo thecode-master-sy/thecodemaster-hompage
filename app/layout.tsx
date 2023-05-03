@@ -43,7 +43,6 @@ export default function RootLayout({
           </ThemeContextProvider>
         </StyledComponentsRegistry>
       </body>
-      <Analytics />
     </html>
   );
 }
