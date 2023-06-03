@@ -226,4 +226,5 @@ export const ImageFrame = styled.div`
   position: relative;
   width: 100px;
   height: 100px;
+  overflow: hidden;
 `;
