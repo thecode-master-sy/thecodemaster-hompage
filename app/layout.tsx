@@ -39,6 +39,7 @@ export default function RootLayout({
             </FlexContainer>
 
             {children}
+            <Analytics/>
             <Footer />
           </ThemeContextProvider>
         </StyledComponentsRegistry>
