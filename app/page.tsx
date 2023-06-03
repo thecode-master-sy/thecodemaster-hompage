@@ -12,7 +12,7 @@ import {
 import { Container } from "@/components/utilis";
 import Image from "next/image";
 import Link from "next/link";
-import Thecodemaster from "../public/thecodemaster.jpg";
+import Thecodemaster from "@/public/thecodemaster.jpg";
 import NextLogo from "../public/next.svg";
 import GithubLogo from "../public/github.svg";
 import ReactLogo from "../public/react.svg";
@@ -37,13 +37,11 @@ export default function Home() {
 
           <ImageFrame>
             <Image
-              width={100}
-              height={100}
               src={Thecodemaster}
               alt="thecodemaster"
-              style={{
-                borderRadius: "50%",
-              }}
+              fill
+              objectFit="contain"
+              objectPosition="center"
             />
           </ImageFrame>
         </FlexContainer>

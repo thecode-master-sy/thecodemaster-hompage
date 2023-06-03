@@ -18,18 +18,16 @@ export const useTheme = () => {
 };
 
 const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
-  
-  const [mode, setMode] = useState<string | null>(localStorage.getItem("mode"));
+  const [mode, setMode] = useState<string | null>("light");
 
   useEffect(() => {
-   const storedMode = localStorage.getItem("mode");
+    const storedMode = localStorage.getItem("mode");
 
-   if(storedMode == "undefined") {
-    setMode("light")
-   }else {
-    setMode(storedMode)
-   }
-
+    if (storedMode == "undefined") {
+      setMode("light");
+    } else {
+      setMode(storedMode);
+    }
   }, []);
 
   const updateMode = () => {

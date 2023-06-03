@@ -223,4 +223,7 @@ export const ImageFrame = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
+  position: relative;
+  width: 100px;
+  height: 100px;
 `;
